@@ -27,7 +27,7 @@ The model predicts:
 - Status: Live and working
 
 ### 🔗 Swagger URI
-https://myproject1-rajsy.australiaeast.inference.ml.azure.com/score
+https://myproject1-rajsy.australiaeast.inference.ml.azure.com/swagger.json
 
 ## 📷 Screenshot
 
