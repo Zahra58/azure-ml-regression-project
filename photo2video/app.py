@@ -4,7 +4,6 @@ import tempfile
 from typing import Tuple
 
 import streamlit as st
-from moviepy.editor import ImageClip
 from PIL import Image
 
 from engine.kenburns import render_ken_burns
@@ -75,7 +74,7 @@ if run and image is not None:
 
             buf = io.BytesIO()
             temp_mp4 = tempfile.mktemp(suffix=".mp4")
-            clip.write_videofile(temp_mp4, fps=fps, codec="libx264", bitrate=bitrate, audio=False, verbose=False, logger=None)
+            clip.write_videofile(temp_mp4, fps=fps, codec="libx264", bitrate=bitrate, audio=False)
             with open(temp_mp4, "rb") as f:
                 buf.write(f.read())
             os.remove(temp_mp4)

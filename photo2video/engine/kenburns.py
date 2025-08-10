@@ -2,7 +2,7 @@ from typing import Tuple
 
 import numpy as np
 from PIL import Image
-from moviepy.editor import ImageClip
+from moviepy import ImageClip
 
 
 def _hex_to_rgb_tuple(hex_color: str) -> Tuple[int, int, int]:
@@ -28,8 +28,6 @@ def render_ken_burns(
 
     img_np = np.array(image)
     img_h, img_w = img_np.shape[:2]
-
-    clip = ImageClip(img_np).set_duration(duration)
 
     def make_frame(t):
         progress = t / max(duration, 1e-6)
@@ -62,5 +60,7 @@ def render_ken_burns(
         else:
             return scaled[top:bottom, left:right]
 
-    animated = clip.fl_image(lambda _: None).set_make_frame(make_frame)
-    return animated.set_fps(fps)
+    # Create a base clip and override the frame function
+    clip = ImageClip(img_np).with_duration(duration).with_fps(fps)
+    clip = clip.with_updated_frame_function(lambda t: make_frame(t))
+    return clip

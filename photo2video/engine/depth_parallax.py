@@ -3,7 +3,7 @@ from typing import Optional, Tuple
 import numpy as np
 import torch
 from PIL import Image, ImageFilter
-from moviepy.editor import ImageClip
+from moviepy import ImageClip
 
 
 _MIDAS_MODEL = None
@@ -136,6 +136,6 @@ def render_depth_parallax(
             canvas = np.array(Image.fromarray(canvas).filter(ImageFilter.GaussianBlur(radius=edge_blur)))
         return canvas
 
-    clip = ImageClip(img_np).set_duration(duration)
-    animated = clip.fl_image(lambda _: None).set_make_frame(make_frame)
-    return animated.set_fps(fps)
+    clip = ImageClip(img_np).with_duration(duration).with_fps(fps)
+    clip = clip.with_updated_frame_function(lambda t: make_frame(t))
+    return clip
