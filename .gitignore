@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual env
+.venv/
+venv/
+
+# Byte-compiled / optimized / DLL files
+*.so
+
+# Logs
+logs/
+*.log
+
+# Test and coverage
+.pytest_cache/
+.coverage*
+htmlcov/
+
+# Mac/Windows
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Media outputs
+outputs/
+
+# Environment
+.env
+.env.*
