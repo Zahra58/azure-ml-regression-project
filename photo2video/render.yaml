@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: photo2video
+    env: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /
+    dockerCommand: ./start.sh
+    envVars:
+      - key: PORT
+        value: 10000
