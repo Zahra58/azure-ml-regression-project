@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pytest_cache/
+
+# Envs
+.venv/
+.env
+.env.*
+
+# VCS
+.git
+.gitignore
+
+# Streamlit
+.streamlit/
+
+# OS/Editor
+.DS_Store
+*.swp
+*.swo
